@@ -8,7 +8,7 @@ import pandas as pd
 logging.set_verbosity_error()
 
 # Load the model once at startup
-@st.cache_resource
+st.cache_data.clear()
 def load_translator():
     return pipeline(
         task="translation",
