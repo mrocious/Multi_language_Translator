@@ -2,6 +2,7 @@ import streamlit as st
 from transformers.utils import logging
 from transformers import pipeline
 import torch
+import pandas as pd
 
 # Silence most transformer logs
 logging.set_verbosity_error()
@@ -12,26 +13,21 @@ def load_translator():
     return pipeline(
         task="translation",
         model="facebook/nllb-200-distilled-600M",
-        torch_dtype=torch.bfloat16,
+        torch_dtype=torch.float32,
         device=0 if torch.cuda.is_available() else -1
     )
 
 translator = load_translator()
 
-# Minimal working set of languages (replace with full later)
-LANGUAGES = {
-    "English": "eng_Latn",
-    "French": "fra_Latn",
-    "Spanish": "spa_Latn",
-    "Arabic": "arb_Arab",
-    "Chinese (Simplified)": "zho_Hans",
-    "Hindi": "hin_Deva",
-    "Russian": "rus_Cyrl",
-    "Portuguese": "por_Latn",
-    "Urdu": "urd_Arab",
-    "Swahili": "swh_Latn",
-    "Zulu": "zul_Latn",
-}
+import pandas as pd
+
+@st.cache_data
+def load_language_map():
+    df = pd.read_csv("languages.csv")
+    return dict(zip(df["Language"], df["FLORES-200 Code"]))
+    
+language_map = load_language_map()
+
 
 def main():
     st.set_page_config(page_title="NLLB Translation", layout="centered")
@@ -43,9 +39,9 @@ def main():
     st.header("2. Select Languages")
     col1, col2 = st.columns(2)
     with col1:
-        source_lang = st.selectbox("Source Language", list(LANGUAGES.keys()))
+        source_lang = st.selectbox("Select source Language", list(language_map.keys()))
     with col2:
-        target_lang = st.selectbox("Target Language", list(LANGUAGES.keys()))
+        target_lang = st.selectbox("Select target Language", list(language_map.keys()))
 
     st.header("3. Translate")
     if st.button("Translate"):
