@@ -30,6 +30,7 @@ language_map = load_language_map()
 
 
 def main():
+    st.set_option("client.showErrorDetails", True)
     st.set_page_config(page_title="NLLB Translation", layout="centered")
     st.title("🌐 FLORES-200 Translation App")
 
@@ -57,8 +58,8 @@ def main():
         with st.spinner("Translating..."):
             result = translator(
                 input_text,
-                src_lang=LANGUAGES[source_lang],
-                tgt_lang=LANGUAGES[target_lang]
+                src_lang=language_map[source_lang],
+                tgt_lang=language_map[target_lang]
             )[0]['translation_text']
 
         st.success("Translated Text")
