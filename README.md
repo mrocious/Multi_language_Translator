@@ -17,7 +17,9 @@ It allows users to translate text between over 200 languages supported by the FL
 
 ## 🖥️ Demo
 
-![screenshot](assets/demo-screenshot.png) <!-- Optional if you add screenshots -->
+![image](https://github.com/user-attachments/assets/09c05627-02af-4ddc-a39c-b33ba0504222)
+
+
 
 ---
 
