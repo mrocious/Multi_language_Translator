@@ -32,11 +32,6 @@ Required packages:
 
 ## ▶️ How to Run
 
-## Prequizits
-   Download the following file from the repo:
-   languages.csv   
-   model.py
-   requirements.txt
 To launch the app locally:
 
 ```bash
@@ -96,6 +91,7 @@ You can extend or modify the language list in `app.py`.
 ├── .gitignore           # Ignored files for Git
 ├── LICENSE              # Open-source license (MIT)
 ├── assets/              # (Optional) Static files like screenshots
+└── .streamlit/          # (Optional) Streamlit config
 ```
 
 ---
@@ -120,3 +116,12 @@ This project is licensed under the **MIT License**. See `LICENSE` for details.
 - Auto-detect source language.
 - Download translated results.
 - Language filtering/search bar for dropdowns.
+
+## 📦 Prerequisites
+
+Before running the app, make sure to download the following files from the repository:
+
+- `languages.csv`
+- `model.py`
+- `requirements.txt`
+
