@@ -32,6 +32,11 @@ Required packages:
 
 ## ▶️ How to Run
 
+## Prequizits
+   Download the following file from the repo:
+   languages.csv   
+   model.py
+   requirements.txt
 To launch the app locally:
 
 ```bash
