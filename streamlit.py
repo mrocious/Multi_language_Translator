@@ -13,8 +13,8 @@ def load_translator():
     return pipeline(
         task="translation",
         model="facebook/nllb-200-distilled-600M",
-        torch_dtype=torch.float32,
-        device=0 if torch.cuda.is_available() else -1
+        #torch_dtype=torch.float32,
+        #device=0 if torch.cuda.is_available() else -1
     )
 
 translator = load_translator()
